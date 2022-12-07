@@ -1,7 +1,8 @@
 <?php
     class crudApp{
         private $conn;
-
+        
+        // DB conection start
         public function __construct()
         {
             #database host
@@ -13,14 +14,15 @@
             $dbpass="";
             $dbname='crudapp';
 
-            $this->conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+            $this->conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname); // DB conection 
             if(!$this->conn){
                 die("Database Connection Error!!!");
             }
         }
+        // DB conection end
         
     
-
+        // DB conection call and add data
         public function add_data($data){
             $std_name=$data['std_name'];
             $std_roll=$data['std_roll'];
@@ -36,7 +38,7 @@
             }
 
         }
-        //  collect and display all data information 
+        //  DB conection call,collect and display all data information 
         public function display_data(){
             $query=" SELECT * From students";
             if(mysqli_query($this->conn , $query)) #connection and query
@@ -45,7 +47,7 @@
                 return $returndata;
             }
         }
-        // received individual data 
+        // DB conection call,received individual data 
         public function display_data_by_id($id){
             $query=" SELECT * From students where Std_ID=$id";
             if(mysqli_query($this->conn , $query)) #connection and query
@@ -56,7 +58,7 @@
             }
         }
         
-        // received updated data
+        // DB conection call,received updated data
         public function update_data($data){
             $std_name=$data['u_std_name'];
             $std_roll=$data['u_std_roll'];
@@ -71,7 +73,8 @@
                 return "Informtion Updated Successfully!";
             }
         }
-
+        
+        // DB conection call,catch data,fetch data,delete data,unlink or delete from folder
         public function delete_data($id){
             $catch_img="SELECT * FROM students WHERE Std_ID=$id";//catch alldata
             $delete_std_info=mysqli_query($this->conn , $catch_img);// received all data by Std_ID
