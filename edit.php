@@ -39,12 +39,14 @@
             echo $msg;
             }
             ?>
+            
             <input class="form-control mb-2" type="text" name="u_std_name" value="<?php echo $returndata['Std_Name'] ?>">
             <input class="form-control mb-2" type="number" name="u_std_roll" value="<?php echo $returndata['Std_Roll'] ?>">
             <label for="image">Upload Your Image</label>
             <input class="form-control mb-2" type="file" name="u_std_image">
             <input type="hidden" name='u_std_id' value="<?php echo $returndata['Std_ID'] ?>">
             <input class="form-control bg-warning " type="submit" value="Update Information" name="edit_btn">
+             
         </form>
     </div>
      
